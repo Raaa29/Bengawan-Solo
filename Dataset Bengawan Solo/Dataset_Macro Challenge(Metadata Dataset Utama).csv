@@ -1,0 +1,18 @@
+METADATA DATASET UTAMA;;;
+;;;
+NAMA VARIABEL;KETERANGAN;TIPE DATA;CARA MENDAPATKAN
+ID Tempat;Unique Identifier Tempat Wisata;String;Generate sendiri
+Nama Wisata;Nama resmi tempat wisata edukatif;String;Mengambil sampel
+Detail Alamat;Alamat lengkap;String;
+Latitude;Titik Latitude;Float;
+Longitude;Titik Longitude;Float;
+Kategori;Kategori utama dari jenis edutourism;String / Label Encoding; 
+Subkategori;Kategori lebih spesifik dari kategori utama;String / Label Encoding;Melabel sendiri
+Deskripsi;Penjelasan singkat mengenai tempat wisata;String;
+Jam Operasional;Jam buka dalam WIB;Time;
+Harga;Harga tiket masuk;Float;
+Fasilitas;Fasilitas pendukung di tempat tersebut;String;
+Jumlah Ulasan;Jumlah Ulasan Pengunjung;Integer;
+Rating;Rata-rata nilai kepuasan pengunjung Google Maps;Float;
+Link Website;Link menuju website;String;
+Link Gambar;Link gambar tempat;String;
