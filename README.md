@@ -210,6 +210,7 @@ getRecommendations(existingUserRequestBody).then(displayRecommendations);
 ## 🚀 Deployment
 Proses deployment dilakukan untuk mengemas model dan logika aplikasi ke dalam sebuah layanan yang dapat diakses secara publik, stabil, dan terisolasi. Platform yang dipilih adalah Hugging Face Spaces dengan menggunakan Docker sebagai SDK.
 API : ```https://farrah29-tourism-recommendation-api.hf.space/recommendations```
+Dokumentasi di Hugging Face : ```https://huggingface.co/spaces/farrah29/tourism-recommendation-api/tree/main```
 
 ### Alur Kerja Deployment
 Deployment dilakukan melalui serangkaian langkah yang terstruktur untuk memastikan reproduktifitas dan keandalan.
