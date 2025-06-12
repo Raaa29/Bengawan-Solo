@@ -50,9 +50,7 @@ Dengan menggabungkan kedua pendekatan ini, model hybrid kami dapat memberikan re
 ## 📂 Dataset
 - Data Collection <br />
 Kami mengumpulkan dataset sendiri. Untuk lebih detail nya dapat dilihat pada link github berikut ini:
-https://github.com/KeimDel/my-data-projects/tree/main/recommendation-system-data-engineer
-
-Poin soal dataset boleh ditambahkan sesuai kebutuhan.
+```https://github.com/KeimDel/my-data-projects/tree/main/recommendation-system-data-engineer```
 
 ## 🛠️ Algoritma dan Model
 
@@ -112,13 +110,14 @@ API ini dirancang untuk kemudahan integrasi dengan berbagai platform, seperti ap
 
 ### 1. Arsitektur Integrasi
 Integrasi dilakukan dengan mengirimkan request POST ke endpoint utama API. Berdasarkan input yang diberikan (ID pengguna atau preferensi kategori), API akan mengembalikan daftar rekomendasi wisata yang terpersonalisasi.
-Endpoint Utama: https://farrah29-tourism-recommendation-api.hf.space/recommendations
+Endpoint Utama: 
+```https://farrah29-tourism-recommendation-api.hf.space/recommendations```
 Metode: POST
 Content-Type: application/json
 
 ### 2. Contoh Integrasi Dengan Javascript
 Berikut adalah contoh kode JavaScript menggunakan fetch API untuk berinteraksi dengan layanan rekomendasi dari sebuah aplikasi web.
-'''
+```
 // Alamat endpoint API yang telah di-deploy
 const API_ENDPOINT = 'https://farrah29-tourism-recommendation-api.hf.space/recommendations';
 
@@ -206,10 +205,11 @@ const existingUserRequestBody = {
 };
 
 getRecommendations(existingUserRequestBody).then(displayRecommendations);
-'''
+```
 
 ## 🚀 Deployment
 Proses deployment dilakukan untuk mengemas model dan logika aplikasi ke dalam sebuah layanan yang dapat diakses secara publik, stabil, dan terisolasi. Platform yang dipilih adalah Hugging Face Spaces dengan menggunakan Docker sebagai SDK.
+API : ```https://farrah29-tourism-recommendation-api.hf.space/recommendations```
 
 ### Alur Kerja Deployment
 Deployment dilakukan melalui serangkaian langkah yang terstruktur untuk memastikan reproduktifitas dan keandalan.
