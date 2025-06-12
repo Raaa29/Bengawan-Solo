@@ -107,4 +107,152 @@ Contoh hasil evaluasi model terbaik:
 
 MAE menunjukkan rata-rata selisih absolut antara rating yang diprediksi dan rating aktual, memberikan gambaran seberapa 'jauh' prediksi kita dari nilai sebenarnya dalam skala rating yang dinormalisasi (0-1). MSE memberikan bobot yang lebih besar pada kesalahan yang lebih besar.
 
+## 🔌 Integration
+API ini dirancang untuk kemudahan integrasi dengan berbagai platform, seperti aplikasi web. Interaksi dilakukan melalui protokol HTTP standar dengan format data JSON, memastikan kompatibilitas yang luas.
+
+### 1. Arsitektur Integrasi
+Integrasi dilakukan dengan mengirimkan request POST ke endpoint utama API. Berdasarkan input yang diberikan (ID pengguna atau preferensi kategori), API akan mengembalikan daftar rekomendasi wisata yang terpersonalisasi.
+Endpoint Utama: https://farrah29-tourism-recommendation-api.hf.space/recommendations
+Metode: POST
+Content-Type: application/json
+
+### 2. Contoh Integrasi Dengan Javascript
+Berikut adalah contoh kode JavaScript menggunakan fetch API untuk berinteraksi dengan layanan rekomendasi dari sebuah aplikasi web.
+'''
+// Alamat endpoint API yang telah di-deploy
+const API_ENDPOINT = 'https://farrah29-tourism-recommendation-api.hf.space/recommendations';
+
+/**
+ * Fungsi untuk mengambil rekomendasi dari API.
+ * @param {object} requestBody - Body request yang akan dikirim.
+ * @returns {Promise<Array>} - Sebuah promise yang akan resolve dengan array rekomendasi.
+ */
+async function getRecommendations(requestBody) {
+    try {
+        console.log('Mengirim request ke API:', JSON.stringify(requestBody));
+
+        const response = await fetch(API_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody),
+        });
+
+        // Cek jika response tidak sukses (misal: error 4xx atau 5xx)
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        // Cek jika array rekomendasi kosong
+        if (data.recommendations && data.recommendations.length > 0) {
+            console.log('Rekomendasi diterima:', data.recommendations);
+            return data.recommendations;
+        } else {
+            console.log('Tidak ada rekomendasi yang cocok ditemukan.');
+            return [];
+        }
+
+    } catch (error) {
+        console.error('Gagal mengambil data dari API:', error);
+        // Kembalikan array kosong jika terjadi error
+        return [];
+    }
+}
+
+/**
+ * Fungsi untuk menampilkan hasil rekomendasi ke halaman web.
+ * @param {Array} recommendations - Array objek rekomendasi.
+ */
+function displayRecommendations(recommendations) {
+    const container = document.getElementById('recommendation-container');
+    container.innerHTML = ''; // Kosongkan kontainer sebelum menampilkan hasil baru
+
+    if (recommendations.length === 0) {
+        container.innerHTML = '<p>Maaf, kami tidak menemukan rekomendasi yang sesuai untuk Anda saat ini.</p>';
+        return;
+    }
+
+    recommendations.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'recommendation-card';
+        card.innerHTML = `
+            <h3>${item['Nama Wisata']}</h3>
+            <p>ID: ${item['ID Tempat']}</p>
+            ${item['Overall Rating (Google Maps)'] ? `<p>Rating: ${item['Overall Rating (Google Maps)']} ⭐</p>` : ''}
+        `;
+        container.appendChild(card);
+    });
+}
+
+
+// --- Contoh Penggunaan ---
+
+// 1. Untuk pengguna baru dengan preferensi kategori
+const newUserRequestBody = {
+    preferred_categories: ["budaya", "sejarah"],
+    n: 5
+};
+
+// getRecommendations(newUserRequestBody).then(displayRecommendations);
+
+
+// 2. Untuk pengguna yang sudah dikenal (ganti dengan ID valid)
+const existingUserRequestBody = {
+    user_id: "U000001", 
+    n: 5
+};
+
+getRecommendations(existingUserRequestBody).then(displayRecommendations);
+'''
+
+## 🚀 Deployment
+Proses deployment dilakukan untuk mengemas model dan logika aplikasi ke dalam sebuah layanan yang dapat diakses secara publik, stabil, dan terisolasi. Platform yang dipilih adalah Hugging Face Spaces dengan menggunakan Docker sebagai SDK.
+
+### Alur Kerja Deployment
+Deployment dilakukan melalui serangkaian langkah yang terstruktur untuk memastikan reproduktifitas dan keandalan.
+
+### 1. Pelatihan Model & Serialisasi Artefak:
+Model NCF dilatih menggunakan data historis.
+Hyperparameter terbaik dicari menggunakan KerasTuner.
+Model terbaik disimpan dalam format .h5 (best_hybrid_ncf_model.h5).
+Objek pendukung seperti user_encoder, item_encoder, dan dataframes yang relevan disimpan menggunakan pickle ke dalam file model_data.pkl.
+
+### 2. Pengembangan API:
+Sebuah server web ringan dibuat menggunakan framework FastAPI.
+Endpoint POST /recommendations dibuat untuk menerima input dan memanggil fungsi logika rekomendasi.
+Logika di-refactor untuk memuat artefak (model dan data) sekali saat startup demi efisiensi.
+
+### 3. Containerisasi dengan Docker:
+Sebuah Dockerfile dibuat untuk mendefinisikan environment aplikasi.
+Menggunakan base image python:3.9-slim untuk menjaga ukuran tetap kecil.
+requirements.txt digunakan untuk menginstal semua dependensi yang diperlukan (tensorflow-cpu, fastapi, uvicorn, dll).
+Aplikasi dijalankan menggunakan server Uvicorn di dalam kontainer pada port 7860.
+
+### 4. Deployment ke Hugging Face Spaces:
+Sebuah Space baru dibuat dengan SDK "Docker".
+Kode aplikasi, Dockerfile, dan folder artifacts diunggah ke repositori Git Space tersebut.
+Git LFS (Large File Storage) digunakan untuk menangani file model .h5 yang berukuran besar.
+Hugging Face secara otomatis membangun image Docker dan menjalankan kontainer berdasarkan konfigurasi yang diberikan.
+
+### 5. Detail Infrastruktur
+![Detail](detail.png)
+
+
+## 📊 Result
+Bagian ini menunjukkan hasil dari performa model dan pengujian fungsionalitas API yang telah di-deploy.
+### 1. Hasil Performa Model
+
+### 2. Pengujian Fungsionalitas API :
+![Uji_API](uji.png)
+
+## ✅ Conclusion
+Proyek ini telah berhasil mencapai tujuannya untuk membangun dan men-deploy sebuah sistem rekomendasi wisata yang fungsional dan dapat diakses melalui API.
+Pencapaian Utama
+1. Model Hybrid Efektif: Berhasil mengimplementasikan model Hybrid Neural Collaborative Filtering yang menggabungkan kekuatan collaborative filtering (interaksi user-item) dengan content-based filtering (fitur tempat wisata), yang terbukti memberikan hasil prediksi yang baik (Test MAE: 0.1842).
+2. Deployment Sukses: Aplikasi berhasil dikemas menggunakan Docker dan di-deploy secara publik di Hugging Face Spaces, menciptakan sebuah layanan RESTful yang andal dan terisolasi.
+3. API Fungsional: API yang dikembangkan mampu melayani dua kasus penggunaan krusial: rekomendasi personal untuk pengguna lama dan rekomendasi berbasis kategori untuk pengguna baru, sehingga mengatasi masalah cold start.
+
 
