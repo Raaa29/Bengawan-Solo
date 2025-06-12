@@ -238,7 +238,7 @@ Git LFS (Large File Storage) digunakan untuk menangani file model .h5 yang beruk
 Hugging Face secara otomatis membangun image Docker dan menjalankan kontainer berdasarkan konfigurasi yang diberikan.
 
 ### 5. Detail Infrastruktur
-![Detail](detail.png)
+![Detail](Dokumentasi/Detail.png)
 
 
 ## 📊 Result
@@ -246,7 +246,7 @@ Bagian ini menunjukkan hasil dari performa model dan pengujian fungsionalitas AP
 ### 1. Hasil Performa Model
 
 ### 2. Pengujian Fungsionalitas API :
-![Uji_API](uji.png)
+![Uji_API](Dokumentasi/Uji_Api.png)
 
 ## ✅ Conclusion
 Proyek ini telah berhasil mencapai tujuannya untuk membangun dan men-deploy sebuah sistem rekomendasi wisata yang fungsional dan dapat diakses melalui API.
