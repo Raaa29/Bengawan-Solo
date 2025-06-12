@@ -11,7 +11,7 @@ Final Project Massive
 
 <br>
 
-## 🚀 Teams
+## 👩‍💻 Teams
 
 - Adyatma Kevin (Design Researcher)
 - Keimaz Delan (Data Engineer)
