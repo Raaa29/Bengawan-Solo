@@ -50,6 +50,7 @@ Dengan menggabungkan kedua pendekatan ini, model hybrid kami dapat memberikan re
 ## 📂 Dataset
 - Data Collection <br />
 Kami mengumpulkan dataset sendiri. Untuk lebih detail nya dapat dilihat pada link github berikut ini:
+[Link_Github](https://github.com/KeimDel/my-data-projects/tree/main/recommendation-system-data-engineer)
 ```https://github.com/KeimDel/my-data-projects/tree/main/recommendation-system-data-engineer```
 
 ## 🛠️ Algoritma dan Model
