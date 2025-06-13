@@ -1,4 +1,4 @@
-# 🌟 Sistem Rekomendasi Tempat Wisata
+# 🌟 SISTEM REKOMENDASI TEMPAT WISATA 🌟
 
 [![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)](https://www.tensorflow.org/)
@@ -7,7 +7,7 @@
 [![Scikit-learn](https://img.shields.io/badge/scikit--learn-red)](https://scikit-learn.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 👨‍👩‍👧‍👦 Tim Pengembang
+## 👨‍👩‍👧‍👦 TIM PENGEMBANG
 
 | Nama | Peran |
 |------|-------|
@@ -18,7 +18,7 @@
 | Handy Arfiano | Machine Learning Engineer |
 | Farraheira | Scrum Master AI dan Machine Learning Ops |
 
-## 📝 Deskripsi Proyek
+## 📝 DESKRIPSI PROYEK
 
 Proyek ini mengembangkan sistem rekomendasi tempat wisata dengan pendekatan hybrid menggunakan kombinasi model **Collaborative Filtering** (berbasis NCF) dan **Content-Based Filtering**. Sistem ini dirancang untuk memberikan rekomendasi yang personalisasi baik untuk pengguna yang sudah memiliki riwayat interaksi maupun pengguna baru.
 
@@ -52,7 +52,7 @@ Untuk mengatasi masalah tersebut, kami mengusulkan dan membangun **Sistem Rekome
 
 Dengan menggabungkan kedua pendekatan ini, model hybrid kami dapat memberikan rekomendasi yang lebih kaya dan akurat. Untuk pengguna yang sudah memiliki riwayat, model dapat memprediksi potensi minat mereka pada item baru. Untuk pengguna baru (cold-start), sistem dapat menggunakan fitur item dan informasi preferensi awal (misal: kategori yang disukai) untuk memberikan rekomendasi awal yang relevan, bahkan tanpa data interaksi sebelumnya.
 
-## 📂 Dataset
+## 📂 DATASET
 
 ### 📊 Pengumpulan Data
 
@@ -60,7 +60,7 @@ Kami mengumpulkan dataset sendiri. Untuk lebih detail, data dapat dilihat pada r
 
 🔗 [Repository Dataset](https://github.com/KeimDel/my-data-projects/tree/main/recommendation-system-data-engineer)
 
-## 🛠️ Algoritma dan Model
+## 🛠️ ALGORITMA DAN MODEL
 
 ### 📚 Framework
 
@@ -128,7 +128,7 @@ Model terbaik dari proses tuning dievaluasi pada data testing untuk mengukur kin
 
 MAE menunjukkan rata-rata selisih absolut antara rating yang diprediksi dan rating aktual, memberikan gambaran seberapa 'jauh' prediksi kita dari nilai sebenarnya dalam skala rating yang dinormalisasi (0-1). MSE memberikan bobot yang lebih besar pada kesalahan yang lebih besar.
 
-## 🔌 Integrasi
+## 🔌 INTEGRASI
 
 API ini dirancang untuk kemudahan integrasi dengan berbagai platform, seperti aplikasi web. Interaksi dilakukan melalui protokol HTTP standar dengan format data JSON, memastikan kompatibilitas yang luas.
 
@@ -237,7 +237,7 @@ const existingUserRequestBody = {
 getRecommendations(existingUserRequestBody).then(displayRecommendations);
 ```
 
-## 🚀 Deployment
+## 🚀 DEPLOYMENT
 
 Proses deployment dilakukan untuk mengemas model dan logika aplikasi ke dalam sebuah layanan yang dapat diakses secara publik, stabil, dan terisolasi. Model dibangun menggunakan Framework Flask agar website dapat mengakses file model.h5. Platform yang dipilih adalah Hugging Face Spaces dengan menggunakan Docker sebagai SDK.
 
@@ -282,13 +282,13 @@ Deployment dilakukan melalui serangkaian langkah yang terstruktur untuk memastik
 
 ![Detail Infrastruktur](Dokumentasii/Detail.png)
 
-## 📊 Hasil
+## 📊 HASIL
 
 ### 📱 Pengujian Fungsionalitas API:
 
 ![Uji API](Dokumentasii/Uji_Api.png)
 
-## ✨ Kesimpulan
+## ✨ KESIMPULAN
 
 Proyek ini telah berhasil mencapai tujuannya untuk membangun dan men-deploy sebuah sistem rekomendasi wisata yang fungsional dan dapat diakses melalui API.
 
