@@ -119,9 +119,6 @@ Sistem ini memiliki tiga skenario rekomendasi:
 2. **🆕 Untuk Pengguna Baru dengan Preferensi Kategori**: 
    Menggunakan model NCF untuk menghitung 'daya tarik' rata-rata item dari perspektif sekelompok 'probe user' yang mewakili pola umum pengguna yang aktif, dikombinasikan dengan skor rating Google Maps. Hasil ini digabungkan dengan filter kategori yang dipilih pengguna.
 
-3. **⭐ Untuk Pengguna Baru Tanpa Riwayat/Probe (Fallback)**: 
-   Jika NCF Probe tidak memungkinkan, sistem akan memfilter item berdasarkan kategori yang dipilih pengguna dan mengurutkannya berdasarkan rating Google Maps dan jumlah ulasan.
-
 ### 📊 Evaluasi Model
 
 Model terbaik dari proses tuning dievaluasi pada data testing untuk mengukur kinerjanya dalam memprediksi rating. Metrik utama yang digunakan adalah **Mean Absolute Error (MAE)** dan **Mean Squared Error (MSE)**.
