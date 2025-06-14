@@ -15,7 +15,7 @@
 | Keimaz Delan | Data Engineer |
 | Fairah Almira | Data Engineer |
 | Andhika Reihan H | Machine Learning Engineer |
-| Handy Arfiano | Machine Learning Engineer |
+| Handy Arfiano H| Machine Learning Engineer |
 | Farraheira | Scrum Master AI dan Machine Learning Ops |
 
 ## 📝 DESKRIPSI PROYEK
